@@ -5,7 +5,7 @@ rule Zerologon_unpatched
 		description = "Detection of unpatched-exploitable netlogon.dll in LSASS memory.Use it on LSASS dump file from volatility memdump or from Sysinternals procdump"
 		author = "Simone Marinari"
 		date = "03/10/2020"
-		reference = "mettere github"
+		reference = "https://github.com/nembo81/YaraRules/blob/main/Zerologon.yar"
 				
     strings:
 
