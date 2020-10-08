@@ -15,6 +15,22 @@ rule Zerologon_patched
         all of them
 }
 
+rule Zerologon_DCSYNC_scanned_exploited
+{
+        meta:
+                ref = "CVE-2020-1472"
+        description = "Detection of Zerologon DCYSNC exploit without null password reset"
+        author = "Simone Marinari"
+        date = "08/10/2020"
+        reference = "https://github.com/nembo81/YaraRules/blob/main/Zerologon.yar"
+                
+    strings:
+        $CVE20201472_DCSYNC = { 00 24 00 00 00 06 00 [1-3] 00 00 00 00 00 00 00 ?? 00 00 00 [2-510] 00 00 00 00 00 00 00 00 ?? ?? ef ff 2e 21 }
+
+    condition:
+        $CVE20201472_DCSYNC
+}
+
 rule Zerologon_Scanned_Exploited
 {
         meta:
