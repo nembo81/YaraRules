@@ -5,7 +5,7 @@ rule Zerologon_patched
         description = "Detection of patched netlogon.dll in LSASS memory.Use it with volatility yarascan plugin or with yara standalone executable on memory dump files"
 	author = "Simone Marinari"
 	date = "03/10/2020"
-	reference = "https://github.com/nembo81/YaraRules/blob/main/Zerologon.yar"
+	reference = "https://github.com/nembo81/YaraRules"
 				
     strings:
 
@@ -22,7 +22,7 @@ rule Zerologon_DCSYNC_Scanned_Exploited
         description = "Detection of Zerologon DCYSNC exploit without null password reset"
         author = "Simone Marinari"
         date = "08/10/2020"
-        reference = "https://github.com/nembo81/YaraRules/blob/main/Zerologon.yar"
+        reference = "https://github.com/nembo81/YaraRules"
 	reference_1 = "https://dirkjanm.io/a-different-way-of-abusing-zerologon/"
                 
     strings:
