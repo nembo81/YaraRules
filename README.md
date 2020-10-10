@@ -11,3 +11,7 @@ Yara rules repository
   - Patch check :
       - Prints out "Zerologon_patched" if the server is updated
       - No output if the server is vulnerable to zerologon.
+      
+    
+- Bluekeep.yar (tested on Windows 2008R2).Use it with yara standalone executable on memory dump files
+  - Detect if a scanner/exploit has been executed since the last startup and it prints out "Bluekeep_exploit_scanner"
