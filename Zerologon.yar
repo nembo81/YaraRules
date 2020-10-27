@@ -36,16 +36,17 @@ rule Zerologon_Scanned_Exploited
 {
     meta:
          ref = "CVE-2020-1472"
-         description = "Detection of Zerologon Scanner/Exploit using null client credentials (it finds scanning attempts on patched systems too)"
-         author = "Cynet"
-         date = "24/09/2020"
-         reference = "https://www.cynet.com/zerologon"
+         description = "Detection of Zerologon Scanner/Exploit (it finds scanning attempts on patched systems too)"
+         author = "Simone Marinari"
+         date = "27/10/2020"
+         reference_original_rule = "https://www.cynet.com/zerologon"
          reference_1 = "https://www.secura.com/blog/zero-logon"
                 
     strings:
-        $CVE20201472 = { 00 24 00 00 00 06 00 ?? 00 00 00 00 00 00 00 ?? 00 00 00 [2-510] 00 00 00 00 00 00 00 00 ff ff 2f 21 }
-
+        
+        $poc_exploit = { 00 24 00 00 00 06 00 ?? 00 00 00 00 00 00 00 ?? 00 00 00 [2-510] 00 00 00 00 00 00 00 00 ff ff 2f 21 }
+        $sharpzerologon_auth = { 00 24 00 00 00 00 00 06 00 00 00 ?? 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ?? 00 00 00 00 00 00 00 [2-510] 00 00 00 00 00 00 00 00 ff ff 2f 21 }
 
     condition:
-        $CVE20201472
+        $sharpzerologon_auth or $poc_exploit
 }
