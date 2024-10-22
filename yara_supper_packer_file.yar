@@ -3,10 +3,9 @@ rule SupperPacker : FILE {
     meta:
         name        = "Supper Team Packer detected on Supper backdoor and keylogger"
         author      = "Simone Marinari"
-		ref         = "https://x.com/nembo81pr/status/1841390890167775551"
+	ref         = "https://x.com/nembo81pr/status/1841390890167775551"
         created     = "2024-10-22"
-        reliability = 
-		tags = "FILE"
+	tags = "FILE"
         tlp         = "TLP:white"
         sample      = "64a0ab00d90682b1807c5d7da1a4ae67cde4c5757fc7d995d8f126f0ec8ae983"
 
