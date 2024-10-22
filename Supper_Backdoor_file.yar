@@ -1,7 +1,7 @@
 import "pe"
 rule SupperBackdoor : FILE {
     meta:
-        name        = "SupperBackdoor"
+        name        = "Supper Team Packer - the rule detects packed malware related to Supper team/backdoor"
         author      = "Simone Marinari"
 		ref         = "https://x.com/nembo81pr/status/1841390890167775551"
         created     = "2024-10-22"
