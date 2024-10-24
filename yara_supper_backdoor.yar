@@ -6,16 +6,15 @@ rule backdoor_supper_mem {
         scan_context = "memory"
         os = "windows"
        strings:
-                $b1 = "rundll32.exe %s,run %s" fullword
-        	$a2 = "remove"
-		$a3 = "test"
-		$a4 = "socks.dll"
-		$a5 = "main.dll"
-		$a6 = /%s\/tmpf\d+\.dll/
-		$a7 = "%s/s01bafg" fullword wide
-		$a8 = "%d.%d.%d.%d" fullword wide
-		$a9 = "%s/tmp%d.dll" fullword
-                $a10 = "%s/ribdgfj"
+        $b1 = "rundll32.exe %s,run %s" fullword
+		$a1 = "socks.dll"
+		$a2 = "main.dll"
+		$a3 = /%s\/tmpf\d+(\.dll|\.exe)/
+		$a4 = "%s/s01bafg" fullword wide
+		$a5 = "%d.%d.%d.%d" fullword wide
+		$a6 = "%s/tmp%d.dll" fullword
+        $a7 = "%s/ribdgfj"
+		$a8 = "schtasks.exe /Create" fullword
      condition:
-        $b1 and 7 of($a*)
+        $b1 or 3 of($a*)
 }
