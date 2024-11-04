@@ -15,3 +15,8 @@ Yara rules repository
     
 - Bluekeep.yar (tested on Windows 2008R2).Use it with yara standalone executable on memory dump files
   - Detect if a scanner/exploit has been executed since the last startup and it prints out "Bluekeep_exploit_scanner"
+
+- yara_supper_packer_file.yar
+  -  Detect all files packed with "Supper" packer (it seems that all samples are from 2024)
+- yara_supper_backdoor.yar
+  - In-memory rule to look for suspicious processes related to "Supper" backdoor (found during interlock ransmoware IR in sept 2024)
