@@ -1,7 +1,7 @@
 import "pe"
 rule SupperPacker : FILE {
     meta:
-        name        = "Supper Team Packer detected on Supper backdoor and keylogger"
+        name        = "Supper Team Packer detected on Supper backdoor,keylogger and interlock ransomware pe"
         author      = "Simone Marinari"
 	ref         = "https://x.com/nembo81pr/status/1841390890167775551"
         created     = "2024-10-22"
