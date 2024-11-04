@@ -13,5 +13,5 @@ rule SupperPacker : FILE {
 		$a2 = { C7 45 E0 6B 65 72 6E C7 45 E4 65 6C 33 32 C7 45 E8 2E 64 6C 6C C6 45 EC 00 00 }
 
 	condition:
-	    uint16(0)==0x5a4d and filesize <1500KB and any of ($a*)
+	    uint16(0)==0x5a4d and any of ($a*)
 }
