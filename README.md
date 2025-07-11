@@ -20,3 +20,5 @@ Yara rules repository
   -  Detect all files packed with "Supper" packer (it seems that all samples are from 2024)
 - yara_supper_backdoor.yar
   - In-memory rule to look for suspicious processes related to "Supper" backdoor (found during interlock ransmoware IR in sept 2024)
+- yara_pipemagic.yar
+  - In-memory rule to look for suspicious processes related to "PipeMagic" backdoor (found during RansomExx ransmoware IR in may 2025)
