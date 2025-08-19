@@ -12,5 +12,5 @@ rule backdoor_pipemagic {
 		$a2 = "\\\\.\\pipe\\1.%s"
 		$a3 = "127.0.0.1:8082"
      condition:
-        $b1 or 2 of($a*)
+        ($b1 or $b2) or 2 of($a*)
 }
