@@ -1,6 +1,6 @@
 rule backdoor_pipemagic {
      meta:
-        author = "Simone Marinari"
+        author = "Simone Marinari - @nembo81"
         severity = 100
         arch_context = "x86"
         scan_context = "memory"
