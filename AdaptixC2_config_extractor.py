@@ -30,56 +30,41 @@ def parse_decrypted_config(data):
     try:
         stream = io.BytesIO(data)
         
-        # Debug: Print first 100 bytes in hex for analysis
-        print(f"[DEBUG] First 100 bytes: {data[:100].hex()}", file=sys.stderr)
-        
         # 1. Skip the 9-byte header.
         stream.seek(9)
-        print(f"[DEBUG] Position after header skip: {stream.tell()}", file=sys.stderr)
 
         # 2. Read C2 Server (format: [Length][Value including null])
         c2_len = struct.unpack('<I', stream.read(4))[0]
-        print(f"[DEBUG] C2 length: {c2_len}, position: {stream.tell()}", file=sys.stderr)
         c2_data = stream.read(c2_len)
         c2_val = c2_data.rstrip(b'\x00').decode('latin-1', errors='ignore')
         config['C2 Server'] = c2_val
-        print(f"[DEBUG] C2 Server: '{c2_val}', raw: {c2_data.hex()}, position: {stream.tell()}", file=sys.stderr)
 
         # 3. Skip the 4-byte intermediate "type" field (e.g., bb 01 00 00).
-        type_field = stream.read(4)
-        print(f"[DEBUG] Type field: {type_field.hex()}, position: {stream.tell()}", file=sys.stderr)
+        stream.read(4)
 
         # 4. Read Method field
         method_len = struct.unpack('<I', stream.read(4))[0]
-        print(f"[DEBUG] Method length: {method_len}, position: {stream.tell()}", file=sys.stderr)
         method_data = stream.read(method_len)
         method_val = method_data.rstrip(b'\x00').decode('latin-1', errors='ignore')
         config['Method'] = method_val
-        print(f"[DEBUG] Method: '{method_val}', raw: {method_data.hex()}, position: {stream.tell()}", file=sys.stderr)
 
         # 5. Read Path field
         path_len = struct.unpack('<I', stream.read(4))[0]
-        print(f"[DEBUG] Path length: {path_len}, position: {stream.tell()}", file=sys.stderr)
         path_data = stream.read(path_len)
         path_val = path_data.rstrip(b'\x00').decode('latin-1', errors='ignore')
         config['Path'] = path_val
-        print(f"[DEBUG] Path: '{path_val}', raw: {path_data.hex()}, position: {stream.tell()}", file=sys.stderr)
         
         # 6. Read Header Name field
         h_name_len = struct.unpack('<I', stream.read(4))[0]
-        print(f"[DEBUG] Header name length: {h_name_len}, position: {stream.tell()}", file=sys.stderr)
         header_data = stream.read(h_name_len)
         header_name = header_data.rstrip(b'\x00').decode('latin-1', errors='ignore')
         config['Header Name'] = header_name
-        print(f"[DEBUG] Header Name: '{header_name}', raw: {header_data.hex()}, position: {stream.tell()}", file=sys.stderr)
 
         # 7. Read User-Agent field
         ua_len = struct.unpack('<I', stream.read(4))[0]
-        print(f"[DEBUG] UA length: {ua_len}, position: {stream.tell()}", file=sys.stderr)
         ua_data = stream.read(ua_len)
         ua_val = ua_data.rstrip(b'\x00').decode('latin-1', errors='ignore')
         config['User-Agent'] = ua_val
-        print(f"[DEBUG] User-Agent: '{ua_val}', raw: {ua_data[:50].hex()}..., position: {stream.tell()}", file=sys.stderr)
 
         return config
 
