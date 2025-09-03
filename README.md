@@ -22,3 +22,5 @@ Yara rules repository
   - In-memory rule to look for suspicious processes related to "Supper" backdoor (found during interlock ransmoware IR in sept 2024)
 - yara_pipemagic.yar
   - In-memory rule to look for suspicious processes related to "PipeMagic" backdoor (found during RansomExx ransmoware IR in may 2025)
+- adaptixC2_yara.yar
+  - In-memory rule to look for suspicious processes related to "AdaptixC2" backdoor (found during Qilin ransmoware IR in sept 2025)
