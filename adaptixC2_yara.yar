@@ -1,4 +1,4 @@
-rule backdoor_AdaptixC2 {
+rule backdoor_AdaptixC2_http_beacon {
      meta:
         author = "Simone Marinari"
         severity = 100
