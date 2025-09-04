@@ -1,4 +1,4 @@
-rule backdoor_AdaptixC2_http_beacon {
+rule backdoor_AdaptixC2 {
      meta:
         author = "Simone Marinari"
         severity = 100
@@ -8,9 +8,9 @@ rule backdoor_AdaptixC2_http_beacon {
        strings:
         $b1 = "AdaptixC2"
         $b2 = "X-Beacon-Id"
-        $b3 = "X-Session-Id"
+		$d1 = /X-[0-9a-zA-Z]{3,10}-Id/
 		$a1 = "Mozilla/5.0"
 		$a2 = "POST /"
      condition:
-        $b1 or (($b2 or $b3) and 1 of($a*))
+       1 of ($b*) or ($d1 and 1 of($a*))
 }
